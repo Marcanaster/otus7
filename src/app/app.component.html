@@ -1,0 +1,70 @@
+<nz-layout class="app-layout">
+  <nz-header>
+    <div class="sidebar-logo">
+      <div style="float: left; padding-right: 90px">
+        <h1>Otus7VNTDHETUJ</h1>
+      </div>
+      <div style="float: left; padding-right: 24px">
+        <span style="color:aliceblue">Business Intelligence</span>
+      </div>
+    </div>
+
+    <div class="sidebar-logo-right">
+      <div style="float: right; padding-right: 24px">
+        <span nz-icon nzType="user" nzTheme="outline" class="user"></span>
+      </div>
+      <div style="float: right; padding-right: 24px">
+        <span nz-icon nzType="notification" nzTheme="outline"></span>
+      </div>
+      <div style="float: right; padding-right: 24px">
+        <span nz-icon nzType="file" nzTheme="outline"></span>
+      </div>
+      <div style="float: right; padding-right: 24px">
+        <span nz-icon nzType="star" nzTheme="outline"></span>
+      </div>
+      <div style="float: right; padding-right: 24px">
+        <span nz-icon nzType="search" nzTheme="outline"></span>
+      </div>
+    </div>
+  </nz-header>
+
+  <nz-layout>
+    <nz-sider
+      class="menu-sidebar"
+      nzCollapsible
+      nzWidth="256px"
+      nzBreakpoint="md"
+      [(nzCollapsed)]="isCollapsed"
+      [nzTrigger]="null"
+    >
+      <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+        <span
+          class="trigger"
+          nz-icon
+          [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          style="color: black"
+        ></span>
+      </span>
+      <ul
+        nz-menu
+        nzTheme="dark"
+        nzMode="inline"
+        [nzInlineCollapsed]="isCollapsed"
+      >
+        <li nz-menu-item nzMatchRouter>
+          <span nz-icon nzType="home" nzTheme="outline"></span>
+          <a routerLink="/home"> &nbsp; Home</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <span nz-icon nzType="user" nzTheme="outline"></span>
+          <a routerLink="/pilotos"> &nbsp; Pilotos</a>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

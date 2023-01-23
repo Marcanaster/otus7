@@ -1,0 +1,67 @@
+<app-bread-crumb exibe="sim" page="Pilotos"></app-bread-crumb>
+<div class="container">
+  <div class="card list-car">
+    <h5 class="card-header">Lista de pilotos</h5>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Nome familia</th>
+            <th scope="col">Aniverário</th>
+            <th scope="col">Nacionalidade</th>
+            <th scope="col">Acões</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let piloto of pilotos
+                | paginate
+                  : {
+                      itemsPerPage: tableSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+              let i = index
+            "
+          >
+            <td>{{ piloto.driverId }}</td>
+            <td>{{ piloto.givenName }}</td>
+            <td>{{ piloto.familyName }}</td>
+            <td>{{ piloto.dateOfBirth | date : "dd/MM/yyyy" }}</td>
+            <td>{{ piloto.nationality }}</td>
+            <td>
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Ação
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Editar</a>
+                  <a class="dropdown-item" href="#">Deletar</a>
+                  <a class="dropdown-item" href="#">Copiar</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
